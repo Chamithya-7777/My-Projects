@@ -1,0 +1,251 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  /* use theme variables (keeps dark-mode behavior) */
+  background: var(--bg, #f0f0f0);
+  color: var(--text, #111);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* top aligned for web app */
+  padding: 40px 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Container: wider for desktop/web app */
+.container {
+  width: 900px;
+  max-width: calc(100% - 80px);
+  background: var(--container-bg, #fff);
+  padding: 36px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(2,6,23,0.08);
+  text-align: left;
+  position: relative; /* allows absolute-positioned controls if needed */
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* Heading */
+h1 {
+  color: var(--accent, #05e83e);
+  margin-bottom: 8px;
+  font-size: 28px;
+}
+
+/* Time Display */
+#time {
+  font-size: 14px;
+  color: gray;
+  margin-bottom: 15px;
+}
+
+/* Input and Button */
+.input-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#taskInput {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#addBtn {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#addBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Task List */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: #fafafa;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+li:hover {
+  background-color: #f1f1f1;
+}
+
+button.delete {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+.dark-mode .container {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.dark-mode li {
+  background-color: #333;
+}
+
+.dark-mode li:hover {
+  background-color: #444;
+}
+
+.dark-mode #addBtn {
+  background-color: #4caf50;
+}
+
+.dark-mode #addBtn:hover {
+  background-color: #3d8c40;
+}
+
+/* Dark Mode Button */
+#darkModeBtn {
+  margin-top: 15px;
+  padding: 10px;
+  border: none;
+  background-color: #444;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#darkModeBtn:hover {
+  background-color: #666;
+}
+
+/* header row with small top-right toggle */
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+/* Small circular toggle positioned inside header (top-right of container) */
+.small-toggle {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s, color .15s, border-color .15s;
+  color: var(--text);
+  flex: 0 0 auto;
+}
+
+/* Slightly darker hover for desktop */
+.small-toggle:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* Dark styles for the toggle (when body has .dark-mode) */
+.dark-mode .small-toggle {
+  border-color: rgba(255,255,255,0.08);
+}
+
+/* Preserve focus ring for accessibility */
+.small-toggle:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 800px) {
+  .container {
+    width: 100%;
+    max-width: calc(100% - 40px);
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .small-toggle {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .input-section {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #darkModeBtn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+
+/* theme variables */
+:root {
+    --bg: #ffffff;
+    --container-bg: #f7f7f8;
+    --text: #111827;
+    --muted: #6b7280;
+    --accent: #2563eb;
+}
+
+.dark-mode {
+    --bg: #000000;
+    --container-bg: #0f1724;
+    --text: #e6eef8;
+    --muted: #9aa6bd;
+    --accent: #60a5fa;
+}
+
+/* apply variables */
+body {
+    background: var(--bg);
+    color: var(--text);
+    transition: background .25s ease, color .25s ease;
+}
+
+/* container should use the variable */
+.container {
+    background: var(--container-bg);
+    transition: background .25s ease;
+    /* ...existing container styles... */
+}
