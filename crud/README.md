@@ -1,11 +1,6 @@
 # CRUD Web Application
 
 A complete PHP MySQL web application with Create, Read, Update, Delete operations.
-
-## 🚀 Live Demo
-- *Live Website:* https://chamtihya.infinityfreeapp.com
-- *Local Development:* http://localhost/crud/index.php
-
 ## 📁 Project Features
 - User management system
 - Database operations (CRUD)
